@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="foundryx.png" alt="Foundryx logo" width="160" />
+  <img src="FoundryX.png" alt="FoundryX logo" width="160" />
 </p>
-<h1 align="center">Foundryx</h1>
+<h1 align="center">FoundryX</h1>
 <p align="center">
   <strong>All-in-one Minecraft server utility mod for Fabric, Forge, and NeoForge</strong>
 </p>
@@ -23,7 +23,7 @@
 
 ## Overview
 
-Foundryx brings a modern Essentials-style experience to cross-loader Minecraft 1.21.10 servers. A shared core module powers Fabric, Forge, and NeoForge builds while providing the same commands, configuration, and data storage in every environment. Persistent JSON storage keeps homes, warps, balances, jails, and moderation records in sync across restarts, and optional LuckPerms integration offers granular control over who can use what.
+FoundryX brings a modern Essentials-style experience to cross-loader Minecraft 1.21.10 servers. A shared core module powers Fabric, Forge, and NeoForge builds while providing the same commands, configuration, and data storage in every environment. Persistent JSON storage keeps homes, warps, balances, jails, and moderation records in sync across restarts, and optional LuckPerms integration offers granular control over who can use what.
 
 ## Feature highlights
 
@@ -35,14 +35,14 @@ Foundryx brings a modern Essentials-style experience to cross-loader Minecraft 1
 
 ## Configuration
 
-Running the mod for the first time creates `config/foundryx.toml`. Key sections include:
+Running the mod for the first time creates `config/FoundryX.toml`. Key sections include:
 
 - `language.language` – Switches between `en_us` and `ru_ru` translations.
 - `teleport` and `tpa` – Delay settings and cancellation behaviour for home, spawn, warp, back, and `/tpa` teleports.
 - `tab` and `list` – TAB refresh cadence and group ordering for `/list`.
 - `afk` – Idle timeout, kick toggle, and kick delay.
 
-Kits live in `config/foundryx/kits.json`, created automatically as a template; edit it to define items, cooldowns, and display names.
+Kits live in `config/FoundryX/kits.json`, created automatically as a template; edit it to define items, cooldowns, and display names.
 
 </details>
 
@@ -51,7 +51,7 @@ Kits live in `config/foundryx/kits.json`, created automatically as a template; e
 
 ## Обзор
 
-Foundryx переносит современный функционал Essentials на кросс-загрузочные серверы Minecraft 1.21.10. Общий модуль обеспечивает единый набор команд, настроек и хранения данных для Fabric, Forge и NeoForge. Данные о домах, варпах, балансах, тюрьмах и модерации сохраняются в JSON между перезапусками, а интеграция с LuckPerms (если установлена) даёт точный контроль за правами игроков.
+FoundryX переносит современный функционал Essentials на кросс-загрузочные серверы Minecraft 1.21.10. Общий модуль обеспечивает единый набор команд, настроек и хранения данных для Fabric, Forge и NeoForge. Данные о домах, варпах, балансах, тюрьмах и модерации сохраняются в JSON между перезапусками, а интеграция с LuckPerms (если установлена) даёт точный контроль за правами игроков.
 
 ## Ключевые возможности
 
@@ -63,13 +63,13 @@ Foundryx переносит современный функционал Essentia
 
 ## Настройка
 
-При первом запуске создаётся `config/foundryx.toml`. Основные блоки настроек:
+При первом запуске создаётся `config/FoundryX.toml`. Основные блоки настроек:
 
 - `language.language` — выбор перевода `en_us` или `ru_ru`.
 - `teleport` и `tpa` — задержки и отмена телепортов для домов, спавна, варпов, `/back` и `/tpa`.
 - `tab` и `list` — частота обновления TAB и порядок групп команды `/list`.
 - `afk` — таймаут бездействия, включение кика и время до кика.
 
-Файл `config/foundryx/kits.json` создаётся автоматически и служит шаблоном для настройки наборов предметов, их кулдаунов и отображаемых названий.
+Файл `config/FoundryX/kits.json` создаётся автоматически и служит шаблоном для настройки наборов предметов, их кулдаунов и отображаемых названий.
 
 </details>
