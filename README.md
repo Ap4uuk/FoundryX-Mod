@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="common/src/main/resources/foundryx.png" alt="Foundryx logo" width="160" />
+  <img src="foundryx.png" alt="Foundryx logo" width="160" />
 </p>
 <h1 align="center">Foundryx</h1>
 <p align="center">
