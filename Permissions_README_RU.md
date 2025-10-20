@@ -17,13 +17,14 @@
 | `/pay` | `foundryx.command.pay` | Перевод валюты другому игроку. |
 | `/kit` | `foundryx.command.kit` | Получение набора предметов. |
 | `/afk` | `foundryx.command.afk` | Вручную включает/выключает статус AFK. |
+| `/near` | `foundryx.command.near` | Показывает игроков поблизости в заданном радиусе. |
 | `/suicide` | `foundryx.command.suicide` | Мгновенный респаун. |
 | `/motd` | `foundryx.command.motd` | Показ сообщения дня. |
-| `/tpa` | `foundryx.command.tpa` | Запрос телепорта к игроку. |
+| `/tpa` | `foundryx.command.tpa` | Запрос телепорта к игроку (алиас: `/call`). |
 | `/tpaccept` | `foundryx.command.tpaccept` | Принятие запроса телепорта. |
 | `/tpdeny` | `foundryx.command.tpdeny` | Отклонение запроса телепорта. |
 | `/mail` | `foundryx.command.mail` | Открывает внутриигровую почту. |
-| `/msg` | `foundryx.command.msg` | Личное сообщение другому игроку. |
+| `/msg` | `foundryx.command.msg` | Личное сообщение (алиасы: `/tell`, `/m`). |
 | `/helpop` | `foundryx.command.helpop` | Обращение к модераторам. |
 | `/rules` | `foundryx.command.rules` | Отображает правила сервера. |
 | `/help` | `foundryx.command.help` | Справочное меню с категориями команд. |
@@ -79,6 +80,7 @@
 | `/unbanip` | `foundryx.command.unbanip` | Снимает IP-бан. |
 | `/banlist` | `foundryx.command.banlist` | Показывает список банов. |
 | `/kick` | `foundryx.command.kick` | Выбрасывает игрока с сервера. |
+| `/vanish` | `foundryx.command.vanish` | Включает режим невидимости для персонала (алиас: `/v`). |
 | `/whois` | `foundryx.command.whois` | Отображает профиль модерации. |
 | `/list` | `foundryx.command.list` | Выводит форматированный список игроков. |
 | `/gc` | `foundryx.command.gc` | Отображает показатели производительности. |
@@ -92,13 +94,17 @@
 | `/enderchest` (личный) | `foundryx.command.enderchest.small` | Доступ к личному удалённому эндер-сундуку. |
 | `/enderchest` (расширенный) | `foundryx.command.enderchest.large` | Открывает расширенный сундук для персонала. |
 | `/enderchest` (чужой) | `foundryx.command.enderchest.other` | Позволяет просматривать чужие эндер-сундуки. |
+| `/clearchat` | `foundryx.command.clearchat` | Очищает общий чат у всех игроков (алиас: `/cc`). |
+| `/clear` | `foundryx.command.clear` | Очищает инвентарь исполнителя или указанного игрока. |
 
 ## Дополнительные узлы
 
 | Permission-узел | Описание | Fallback |
 | --- | --- | --- |
 | `foundryx.chat.color` | Разрешает цветовое форматирование в общем чате. | Оператор уровня 2 |
+| `foundryx.chat.format` | Разрешает жирный/курсивный/подчёркнутый/зачёркнутый стиль чата. | Оператор уровня 2 |
 | `foundryx.afk.kick_exempt` | Игнорирует автоматический кик за AFK. | Оператор уровня 3 |
+| `foundryx.command.list.hidden` | Позволяет `/list` показывать скрытых или невидимых игроков. | Оператор уровня 3 |
 | `foundryx.kit.<id>` | Управляет доступом к конкретному набору. | Задаётся конфигурацией |
 
 ## Рекомендации

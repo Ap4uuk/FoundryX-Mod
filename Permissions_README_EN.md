@@ -17,13 +17,14 @@ This document lists every permission node exposed by Foundryx and the context in
 | `/pay` | `foundryx.command.pay` | Transfers currency to another player. |
 | `/kit` | `foundryx.command.kit` | Claims an available kit. |
 | `/afk` | `foundryx.command.afk` | Toggles manual AFK state. |
+| `/near` | `foundryx.command.near` | Lists nearby players within the configured radius. |
 | `/suicide` | `foundryx.command.suicide` | Respawns the player immediately. |
 | `/motd` | `foundryx.command.motd` | Displays the message of the day. |
-| `/tpa` | `foundryx.command.tpa` | Sends a teleport request to another player. |
+| `/tpa` | `foundryx.command.tpa` | Sends a teleport request to another player (alias: `/call`). |
 | `/tpaccept` | `foundryx.command.tpaccept` | Accepts a pending teleport request. |
 | `/tpdeny` | `foundryx.command.tpdeny` | Rejects a pending teleport request. |
 | `/mail` | `foundryx.command.mail` | Opens the in-game mail interface. |
-| `/msg` | `foundryx.command.msg` | Sends a private message. |
+| `/msg` | `foundryx.command.msg` | Sends a private message (aliases: `/tell`, `/m`). |
 | `/helpop` | `foundryx.command.helpop` | Contacts online staff with a help ticket. |
 | `/rules` | `foundryx.command.rules` | Shows the server rule list. |
 | `/help` | `foundryx.command.help` | Opens the categorized help menu. |
@@ -79,6 +80,7 @@ These nodes keep their fallback access with LuckPerms enabled, but you can still
 | `/unbanip` | `foundryx.command.unbanip` | Removes an IP ban. |
 | `/banlist` | `foundryx.command.banlist` | Lists active bans. |
 | `/kick` | `foundryx.command.kick` | Removes a player from the server. |
+| `/vanish` | `foundryx.command.vanish` | Toggles vanish mode for moderation (alias: `/v`). |
 | `/whois` | `foundryx.command.whois` | Shows a moderation profile for a player. |
 | `/list` | `foundryx.command.list` | Displays the formatted player list. |
 | `/gc` | `foundryx.command.gc` | Shows server performance statistics. |
@@ -92,13 +94,17 @@ These nodes keep their fallback access with LuckPerms enabled, but you can still
 | `/enderchest` (personal) | `foundryx.command.enderchest.small` | Accesses a personal remote ender chest. |
 | `/enderchest` (expanded) | `foundryx.command.enderchest.large` | Opens an expanded ender chest for staff. |
 | `/enderchest` (others) | `foundryx.command.enderchest.other` | Views another player’s ender chest. |
+| `/clearchat` | `foundryx.command.clearchat` | Wipes public chat history for all players (alias: `/cc`). |
+| `/clear` | `foundryx.command.clear` | Clears the executor’s inventory (or a target’s). |
 
 ## Non-Command Permissions
 
 | Node | Purpose | Fallback |
 | --- | --- | --- |
-| `foundryx.chat.color` | Allows colour and formatting codes in public chat. | Operator level 2 |
+| `foundryx.chat.color` | Allows colour codes in public chat. | Operator level 2 |
+| `foundryx.chat.format` | Allows bold/italic/underline/obfuscated chat formatting. | Operator level 2 |
 | `foundryx.afk.kick_exempt` | Grants immunity to AFK kick timers. | Operator level 3 |
+| `foundryx.command.list.hidden` | Allows `/list` to reveal vanished or hidden players. | Operator level 3 |
 | `foundryx.kit.<id>` | Restricts access to individual kits. | Depends on kit definition |
 
 ## Best Practices
