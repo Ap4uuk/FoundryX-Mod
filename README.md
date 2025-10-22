@@ -10,7 +10,7 @@
   <a href="#русская-версия"><strong>🇷🇺 Русский</strong></a>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-1.1.0-3b82f6?style=for-the-badge" alt="Version 1.1.0" />
+  <img src="https://img.shields.io/badge/Version-1.1.3-3b82f6?style=for-the-badge" alt="Version 1.1.3" />
   <img src="https://img.shields.io/badge/Minecraft-1.21.10-10b981?style=for-the-badge" alt="Minecraft 1.21.10" />
   <img src="https://img.shields.io/badge/Java-21-ec4899?style=for-the-badge" alt="Java 21" />
   <img src="https://img.shields.io/badge/License-Apache--2.0-f97316?style=for-the-badge" alt="License" />
