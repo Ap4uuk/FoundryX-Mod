@@ -13,6 +13,9 @@ This document lists every permission node exposed by Foundryx and the context in
 | `/warp` | `foundryx.command.warp` | Teleports to a named public warp. |
 | `/warps` | `foundryx.command.warps` | Displays all available warps. |
 | `/spawn` | `foundryx.command.spawn` | Sends the player to the global spawn point. |
+| `/tpa` | `foundryx.command.tpa` | Sends a teleport request to another player (alias: `/call`). |
+| `/tpaccept` | `foundryx.command.tpaccept` | Accepts a pending teleport request. |
+| `/tpdeny` | `foundryx.command.tpdeny` | Rejects a pending teleport request. |
 | `/balance` | `foundryx.command.balance` | Shows the player’s wallet balance. |
 | `/pay` | `foundryx.command.pay` | Transfers currency to another player. |
 | `/kit` | `foundryx.command.kit` | Claims an available kit. |
@@ -20,9 +23,6 @@ This document lists every permission node exposed by Foundryx and the context in
 | `/near` | `foundryx.command.near` | Lists nearby players within the configured radius. |
 | `/suicide` | `foundryx.command.suicide` | Respawns the player immediately. |
 | `/motd` | `foundryx.command.motd` | Displays the message of the day. |
-| `/tpa` | `foundryx.command.tpa` | Sends a teleport request to another player (alias: `/call`). |
-| `/tpaccept` | `foundryx.command.tpaccept` | Accepts a pending teleport request. |
-| `/tpdeny` | `foundryx.command.tpdeny` | Rejects a pending teleport request. |
 | `/mail` | `foundryx.command.mail` | Opens the in-game mail interface. |
 | `/msg` | `foundryx.command.msg` | Sends a private message (aliases: `/tell`, `/m`). |
 | `/helpop` | `foundryx.command.helpop` | Contacts online staff with a help ticket. |
@@ -39,9 +39,12 @@ This document lists every permission node exposed by Foundryx and the context in
 | `/delwarp` | `foundryx.command.delwarp` | Removes a public warp. |
 | `/setspawn` | `foundryx.command.setspawn` | Updates the server spawn point. |
 | `/fly` | `foundryx.command.fly` | Toggles creative flight for the executor. |
+| `/fly <player>` | `foundryx.command.fly.others` | Toggles creative flight for another player. |
 | `/balance <player>` | `foundryx.command.balance.others` | Views another player’s balance. |
 | `/heal` | `foundryx.command.heal` | Restores health and hunger. |
+| `/heal <player>` | `foundryx.command.heal.others` | Heals a different player. |
 | `/feed` | `foundryx.command.feed` | Refills hunger only. |
+| `/feed <player>` | `foundryx.command.feed.others` | Refills another player’s hunger. |
 | `/repair` | `foundryx.command.repair` | Repairs the held item. |
 | `/repair all` | `foundryx.command.repair.all` | Repairs every item in the inventory. |
 | `/repair armor` | `foundryx.command.repair.armor` | Repairs all worn armour pieces. |
@@ -67,7 +70,9 @@ These nodes keep their fallback access with LuckPerms enabled, but you can still
 | `/nick` (self) | `foundryx.command.nick` | Changes the executor’s nickname. |
 | `/nickreset` others | `foundryx.command.nick.reset.others` | Resets another player’s nickname. |
 | `/god` | `foundryx.command.god` | Toggles invulnerability. |
+| `/god <player>` | `foundryx.command.god.others` | Toggles god mode for another player. |
 | `/gm` | `foundryx.command.gm` | Switches game modes. |
+| `/gm <player>` | `foundryx.command.gm.others` | Changes another player’s game mode. |
 | `/hat` | `foundryx.command.hat` | Moves the held item to the helmet slot. |
 | `/realname` | `foundryx.command.realname` | Reveals a player’s actual username. |
 | `/helpop reply` | `foundryx.command.helpop.reply` | Responds to helpop tickets. |
@@ -83,6 +88,7 @@ These nodes keep their fallback access with LuckPerms enabled, but you can still
 | `/vanish` | `foundryx.command.vanish` | Toggles vanish mode for moderation (alias: `/v`). |
 | `/whois` | `foundryx.command.whois` | Shows a moderation profile for a player. |
 | `/list` | `foundryx.command.list` | Displays the formatted player list. |
+| `/tab reload` | `foundryx.command.tab.reload` | Reloads the dynamic tab list formatting. |
 | `/gc` | `foundryx.command.gc` | Shows server performance statistics. |
 | `/jail` | `foundryx.command.jail` | Sends a player to the configured jail. |
 | `/setjail` | `foundryx.command.setjail` | Creates or updates a jail location. |
@@ -96,6 +102,34 @@ These nodes keep their fallback access with LuckPerms enabled, but you can still
 | `/enderchest` (others) | `foundryx.command.enderchest.other` | Views another player’s ender chest. |
 | `/clearchat` | `foundryx.command.clearchat` | Wipes public chat history for all players (alias: `/cc`). |
 | `/clear` | `foundryx.command.clear` | Clears the executor’s inventory (or a target’s). |
+| `foundryxstorage tojson`/`fxstorage tojson` | `foundryx.command.storage.migrate` | Exports database data to JSON for backups. |
+| `foundryxstorage todb`/`fxstorage todb` | `foundryx.command.storage.migrate` | Imports JSON backups into the live database. |
+
+### Enforcement modifiers
+
+| Permission node | Purpose |
+| --- | --- |
+| `foundryx.command.kill.exempt` | Prevents standard `/kill` from targeting the holder. |
+| `foundryx.command.kill.force` | Allows bypassing `/kill` immunity. |
+| `foundryx.command.kill.notify` | Receives chat alerts when staff execute `/kill`. |
+| `foundryx.command.kick.exempt` | Blocks regular `/kick` usage against the holder. |
+| `foundryx.command.kick.force` | Permits overriding `/kick` immunity. |
+| `foundryx.command.kick.notify` | Delivers notifications about kicks. |
+| `foundryx.command.ban.exempt` | Stops staff from banning the holder without force. |
+| `foundryx.command.ban.force` | Lets staff ban players with exemption. |
+| `foundryx.command.ban.notify` | Sends ban notifications to the holder. |
+| `foundryx.command.tempban.exempt` | Blocks temporary bans unless force is used. |
+| `foundryx.command.tempban.force` | Overrides `/tempban` immunity. |
+| `foundryx.command.tempban.notify` | Notifies about issued temporary bans. |
+| `foundryx.command.mute.exempt` | Prevents permanent mutes from affecting the holder. |
+| `foundryx.command.mute.force` | Allows muting players who have the exemption. |
+| `foundryx.command.mute.notify` | Provides mute notifications. |
+| `foundryx.command.tempmute.exempt` | Blocks temporary mutes unless the executor can force them. |
+| `foundryx.command.tempmute.force` | Overrides temporary mute immunity. |
+| `foundryx.command.tempmute.notify` | Announces temporary mutes. |
+| `foundryx.command.clear.exempt` | Protects a player’s inventory from `/clear`. |
+| `foundryx.command.clear.force` | Allows clearing exempt inventories. |
+| `foundryx.command.clear.notify` | Reports when inventories are cleared. |
 
 ## Non-Command Permissions
 
@@ -112,4 +146,5 @@ These nodes keep their fallback access with LuckPerms enabled, but you can still
 1. Grant broad access to groups using wildcards like `foundryx.command.player.*`, then remove sensitive nodes with explicit negatives.
 2. Separate moderation teams (mutes/bans) from build teams (teleports/world edits) by crafting group-specific bundles.
 3. Audit LuckPerms inheritance to ensure manual-grant commands remain available after installing the plugin.
+4. Include `foundryx.command.storage.migrate` and `foundryx.command.tab.reload` in senior staff groups if you delegate data exports or interface refreshes.
 

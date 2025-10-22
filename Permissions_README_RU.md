@@ -13,6 +13,9 @@
 | `/warp` | `foundryx.command.warp` | Телепорт к общему варпу. |
 | `/warps` | `foundryx.command.warps` | Перечень доступных варпов. |
 | `/spawn` | `foundryx.command.spawn` | Перемещение на спавн сервера. |
+| `/tpa` | `foundryx.command.tpa` | Запрос телепорта к игроку (алиас: `/call`). |
+| `/tpaccept` | `foundryx.command.tpaccept` | Принятие запроса телепорта. |
+| `/tpdeny` | `foundryx.command.tpdeny` | Отклонение запроса телепорта. |
 | `/balance` | `foundryx.command.balance` | Проверка личного баланса. |
 | `/pay` | `foundryx.command.pay` | Перевод валюты другому игроку. |
 | `/kit` | `foundryx.command.kit` | Получение набора предметов. |
@@ -20,9 +23,6 @@
 | `/near` | `foundryx.command.near` | Показывает игроков поблизости в заданном радиусе. |
 | `/suicide` | `foundryx.command.suicide` | Мгновенный респаун. |
 | `/motd` | `foundryx.command.motd` | Показ сообщения дня. |
-| `/tpa` | `foundryx.command.tpa` | Запрос телепорта к игроку (алиас: `/call`). |
-| `/tpaccept` | `foundryx.command.tpaccept` | Принятие запроса телепорта. |
-| `/tpdeny` | `foundryx.command.tpdeny` | Отклонение запроса телепорта. |
 | `/mail` | `foundryx.command.mail` | Открывает внутриигровую почту. |
 | `/msg` | `foundryx.command.msg` | Личное сообщение (алиасы: `/tell`, `/m`). |
 | `/helpop` | `foundryx.command.helpop` | Обращение к модераторам. |
@@ -39,9 +39,12 @@
 | `/delwarp` | `foundryx.command.delwarp` | Удаляет существующий варп. |
 | `/setspawn` | `foundryx.command.setspawn` | Задаёт точку спавна. |
 | `/fly` | `foundryx.command.fly` | Включает полёт. |
+| `/fly <игрок>` | `foundryx.command.fly.others` | Переключает полёт для другого игрока. |
 | `/balance <игрок>` | `foundryx.command.balance.others` | Просмотр чужого баланса. |
 | `/heal` | `foundryx.command.heal` | Мгновенно лечит цель. |
+| `/heal <игрок>` | `foundryx.command.heal.others` | Лечит другого игрока. |
 | `/feed` | `foundryx.command.feed` | Восстанавливает голод. |
+| `/feed <игрок>` | `foundryx.command.feed.others` | Восстанавливает голод другого игрока. |
 | `/repair` | `foundryx.command.repair` | Чинит предмет в руке. |
 | `/repair all` | `foundryx.command.repair.all` | Чинит все предметы в инвентаре. |
 | `/repair armor` | `foundryx.command.repair.armor` | Чинит экипированную броню. |
@@ -67,7 +70,9 @@
 | `/nick` | `foundryx.command.nick` | Изменяет собственный ник. |
 | `/nickreset` | `foundryx.command.nick.reset.others` | Сбрасывает ник другого игрока. |
 | `/god` | `foundryx.command.god` | Включает неуязвимость. |
+| `/god <игрок>` | `foundryx.command.god.others` | Переключает неуязвимость другому игроку. |
 | `/gm` | `foundryx.command.gm` | Переключает режим игры. |
+| `/gm <игрок>` | `foundryx.command.gm.others` | Меняет режим игры у другого игрока. |
 | `/hat` | `foundryx.command.hat` | Перемещает предмет в слот шлема. |
 | `/realname` | `foundryx.command.realname` | Показывает настоящий ник игрока. |
 | `/helpop reply` | `foundryx.command.helpop.reply` | Отвечает на запросы helpop. |
@@ -83,6 +88,7 @@
 | `/vanish` | `foundryx.command.vanish` | Включает режим невидимости для персонала (алиас: `/v`). |
 | `/whois` | `foundryx.command.whois` | Отображает профиль модерации. |
 | `/list` | `foundryx.command.list` | Выводит форматированный список игроков. |
+| `/tab reload` | `foundryx.command.tab.reload` | Перезагружает оформление списка игроков (tab-листа). |
 | `/gc` | `foundryx.command.gc` | Отображает показатели производительности. |
 | `/jail` | `foundryx.command.jail` | Заключает игрока в тюрьму. |
 | `/setjail` | `foundryx.command.setjail` | Создаёт или обновляет тюрьму. |
@@ -96,6 +102,34 @@
 | `/enderchest` (чужой) | `foundryx.command.enderchest.other` | Позволяет просматривать чужие эндер-сундуки. |
 | `/clearchat` | `foundryx.command.clearchat` | Очищает общий чат у всех игроков (алиас: `/cc`). |
 | `/clear` | `foundryx.command.clear` | Очищает инвентарь исполнителя или указанного игрока. |
+| `foundryxstorage tojson`/`fxstorage tojson` | `foundryx.command.storage.migrate` | Экспортирует данные из БД в JSON для резервного копирования. |
+| `foundryxstorage todb`/`fxstorage todb` | `foundryx.command.storage.migrate` | Импортирует JSON-резерв из файлов обратно в базу данных. |
+
+### Дополнительные права для наказаний
+
+| Permission-узел | Назначение |
+| --- | --- |
+| `foundryx.command.kill.exempt` | Защищает игрока от `/kill` без права форса у исполнителя. |
+| `foundryx.command.kill.force` | Позволяет обойти защиту `/kill`. |
+| `foundryx.command.kill.notify` | Присылает уведомления о применении `/kill`. |
+| `foundryx.command.kick.exempt` | Делает игрока невосприимчивым к обычному `/kick`. |
+| `foundryx.command.kick.force` | Разрешает кикать игроков с защитой. |
+| `foundryx.command.kick.notify` | Сообщает о киках в чате. |
+| `foundryx.command.ban.exempt` | Не даёт забанить игрока без дополнительного права. |
+| `foundryx.command.ban.force` | Разрешает банить даже защищённых игроков. |
+| `foundryx.command.ban.notify` | Отправляет уведомления о перманентных банах. |
+| `foundryx.command.tempban.exempt` | Блокирует временные баны без права форса. |
+| `foundryx.command.tempban.force` | Позволяет выдавать временный бан защищённым игрокам. |
+| `foundryx.command.tempban.notify` | Сообщает о временных банах. |
+| `foundryx.command.mute.exempt` | Защищает от бессрочного мута. |
+| `foundryx.command.mute.force` | Даёт возможность выдать мут защищённому игроку. |
+| `foundryx.command.mute.notify` | Присылает уведомления о выданных мутах. |
+| `foundryx.command.tempmute.exempt` | Защищает от временного мута без права форса. |
+| `foundryx.command.tempmute.force` | Разрешает временно мутить защищённых игроков. |
+| `foundryx.command.tempmute.notify` | Уведомляет о временных мутах. |
+| `foundryx.command.clear.exempt` | Не даёт очистить инвентарь командой `/clear`. |
+| `foundryx.command.clear.force` | Позволяет очистить инвентарь даже защищённых игроков. |
+| `foundryx.command.clear.notify` | Отправляет уведомления об очистке инвентарей. |
 
 ## Дополнительные узлы
 
@@ -112,4 +146,5 @@
 1. Выдавайте группам широкие права (`foundryx.command.*`), затем ограничивайте чувствительные команды отрицательными узлами.
 2. Разделяйте роли модерации и строительства, выделяя отдельные наборы разрешений для каждой команды.
 3. После подключения LuckPerms проверьте, что команды с пометкой «ручная выдача» действительно добавлены в нужные группы.
+4. Добавьте `foundryx.command.storage.migrate` и `foundryx.command.tab.reload` в привилегированные группы, если делегируете резервное копирование данных или обслуживание таб-листа.
 
